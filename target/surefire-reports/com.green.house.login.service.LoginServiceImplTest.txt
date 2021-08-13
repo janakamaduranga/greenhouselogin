@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.green.house.login.service.LoginServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.645 s - in com.green.house.login.service.LoginServiceImplTest
