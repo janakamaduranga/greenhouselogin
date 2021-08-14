@@ -1,5 +1,0 @@
-com\green\house\login\service\UserDetailsServiceImplTest.class
-com\green\house\login\service\UserDetailsImplTest.class
-com\green\house\login\controller\LoginControllerTest.class
-com\green\house\login\security\jwt\JwtUtilsTest.class
-com\green\house\login\service\LoginServiceImplTest.class
