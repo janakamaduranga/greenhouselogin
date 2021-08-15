@@ -60,7 +60,8 @@ public class LoginServiceImpl implements LoginService {
 		User user = new User(userRequest.getEmail(), 
 				encoder.encode(userRequest.getPassword()),
 				userRequest.getMobile(),
-				userRequest.getAddress());
+				userRequest.getAddress(),
+				userRequest.getDeviceId());
 
 		Set<String> strRoles = userRequest.getRoles();
 

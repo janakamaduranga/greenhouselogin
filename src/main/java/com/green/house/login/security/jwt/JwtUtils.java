@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 public class JwtUtils {
 
 	public static final String ROLES = "ROLES";
+	public static final String DEVICE_ID = "DEVICE_ID";
+
 	private String jwtSecret;
 
 	private int jwtExpirationMs;
@@ -35,6 +37,7 @@ public class JwtUtils {
 		Map<String, Object> claims = new HashMap<>();
 		claims.put(ROLES,userPrincipal.getAuthorities().stream()
 				.map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
+		claims.put(DEVICE_ID, userPrincipal.getDeviceId());
 
 		return Jwts.builder()
 				.setSubject((userPrincipal.getUsername()))

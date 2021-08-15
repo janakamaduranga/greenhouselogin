@@ -48,7 +48,7 @@ public class LoginServiceImplTest {
 
 	@BeforeEach
 	public void setUp() {
-		userRequest = new UserRequest("test@gg.com", "123","","", new HashSet<String>(Arrays.asList("admin")));
+		userRequest = new UserRequest("test@gg.com", "123","","", new HashSet<String>(Arrays.asList("admin")),"arduino");
 		loginServiceImpl = new LoginServiceImpl(userRepository, roleRepository, encoder, authenticationManager, jwtUtils);
 	}
 

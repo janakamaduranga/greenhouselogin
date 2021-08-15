@@ -43,14 +43,22 @@ public class User {
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
+	@NotBlank
+	@Column(name="device_id", length=200)
+	private String deviceId;
+
 	public User() {
+
 	}
 
-	public User(String email, String password, String mobileNo, String address) {
+	public User(String email, String password,
+				String mobileNo, String address,
+				String deviceId) {
 		this.email = email;
 		this.password = password;
 		this.mobileNo = mobileNo;
 		this.address = address;
+		this.deviceId = deviceId;
 	}
 
 	public Long getId() {
@@ -99,5 +107,13 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getDeviceId() {
+		return deviceId;
+	}
+
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
 	}
 }

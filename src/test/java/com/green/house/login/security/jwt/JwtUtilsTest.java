@@ -21,7 +21,7 @@ class JwtUtilsTest {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 		SimpleGrantedAuthority adminAuthority = new SimpleGrantedAuthority(ERole.ROLE_ADMIN.name());
 		authorities.add(adminAuthority);
-		UserDetailsImpl userDetails = new UserDetailsImpl(200L, EMAIL, "12", authorities);
+		UserDetailsImpl userDetails = new UserDetailsImpl(200L, EMAIL, "12", authorities,"arduino");
 		UsernamePasswordAuthenticationToken authentication = 
 				new UsernamePasswordAuthenticationToken(userDetails, adminAuthority);
 		String token = jwtUtils.generateJwtToken(authentication);

@@ -10,6 +10,7 @@ CREATE TABLE `users` (
   `email` varchar(50) DEFAULT NULL,
   `mobileno` varchar(20) DEFAULT NULL,
   `password` varchar(120) DEFAULT NULL,
+  `device_id` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK6dotkott2kjsp8vw4d0m25fb7` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;

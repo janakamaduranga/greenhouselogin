@@ -21,7 +21,8 @@ public class UserDetailsImplTest {
 	@Test
 	void buildUserDetailsImpl() {
 		final String EMAIL = "test@abc.com";
-		User user = new User(EMAIL, "123","23244","address");
+		User user = new User(EMAIL, "123","23244","address","aduino" +
+				"");
 		Role adminRole = new Role(ERole.ROLE_ADMIN);
 		user.setRoles(new HashSet<Role>(Arrays.asList(adminRole)));
 		

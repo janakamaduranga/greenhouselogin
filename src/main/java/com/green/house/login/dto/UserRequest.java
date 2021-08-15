@@ -31,4 +31,7 @@ public class UserRequest implements Serializable {
 	private String address;
 	
 	private Set<String> roles;
+
+	@JsonProperty(required=true)
+	private String deviceId;
 }
