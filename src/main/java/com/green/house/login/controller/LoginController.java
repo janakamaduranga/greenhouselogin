@@ -7,9 +7,11 @@ import com.green.house.login.service.LoginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+
 
 @RestController
-@CrossOrigin(maxAge=3600)
+@CrossOrigin
 public class LoginController {
 	
 	LoginService loginService;
@@ -24,7 +26,7 @@ public class LoginController {
 		return ResponseEntity.ok(loginService.logInUser(loginRequest));
 	}
 	
-	@PostMapping("/signup")
+	@PostMapping(value = "/signup")
 	public ResponseEntity<String> registerUser(@RequestBody UserRequest loginRequest) {
 		if(loginService.createUser(loginRequest)) {
 			return ResponseEntity.ok("User created successfully");
@@ -33,7 +35,7 @@ public class LoginController {
 		}
 	}
 	
-	@GetMapping("/test")
+	@GetMapping(value = "/test", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<String> test() {
 			return ResponseEntity.ok("login test success");
 		
