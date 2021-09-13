@@ -19,9 +19,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -123,5 +126,28 @@ public class LoginServiceImpl implements LoginService {
 		return new JWTResponse(jwt, 
 				 userDetails.getEmail(), 
 				 roles);
+	}
+
+	@Override
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
+	public JWTResponse lock(LoginRequest loginRequest) {
+		Optional<User> user = userRepository.findByEmail(loginRequest.getEmail());
+		try {
+			Thread.sleep(100000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return new JWTResponse(null, user.get().getEmail(),null);
+	}
+
+	@Override
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
+	public JWTResponse read(LoginRequest loginRequest) {
+		Optional<User> user = userRepository.findByEmail(loginRequest.getEmail());
+		User userdb = user.get();
+		userdb.setDeviceId("xsfdsfsfsfsdf");
+		userRepository.save(userdb);
+
+		return new JWTResponse(null, user.get().getEmail(),null);
 	}
 }

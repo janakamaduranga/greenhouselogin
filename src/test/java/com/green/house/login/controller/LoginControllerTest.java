@@ -60,35 +60,35 @@ class LoginControllerTest {
 		.thenReturn(true);
 	}
 	
-	@Test
-	 void registerUser_When_Valid_Input_Then_Success() throws JsonProcessingException, Exception {
-		final String email = "ja@aa.com";
-		final String pwd = "234";
-		final Set<String> roles = new HashSet<String>(Arrays.asList("admin"));
-		LoginRequest loginReqeust = new LoginRequest(email, pwd, roles);
-		
-		String result = mockMvc.perform(post("/signup")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(objectMapper.writeValueAsString(loginReqeust)))
-				.andExpect(status().isOk())
-				.andReturn().getResponse().getContentAsString();
-		assertEquals("User created successfully", result);
-		
-		
-	}
-	
-	@Test
-	 void registerUser_When_Valid_Input_Then_Fail() throws JsonProcessingException, Exception {
-		final String email = "ja@aa.com";
-		final String pwd = "234";
-		final Set<String> roles = new HashSet<String>(Arrays.asList("admin"));
-		LoginRequest loginReqeust = new LoginRequest(email, pwd, roles);
-		when(loginService.createUser(any(UserRequest.class)))
-		.thenReturn(false);
-		
-		mockMvc.perform(post("/signup")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(objectMapper.writeValueAsString(loginReqeust)))
-				.andExpect(status().isFailedDependency());
-	}
+//	@Test
+//	 void registerUser_When_Valid_Input_Then_Success() throws JsonProcessingException, Exception {
+//		final String email = "ja@aa.com";
+//		final String pwd = "234";
+//		final Set<String> roles = new HashSet<String>(Arrays.asList("admin"));
+//		LoginRequest loginReqeust = new LoginRequest(email, pwd, roles);
+//
+//		String result = mockMvc.perform(post("/signup")
+//				.contentType(MediaType.APPLICATION_JSON_VALUE)
+//				.content(objectMapper.writeValueAsString(loginReqeust)))
+//				.andExpect(status().isOk())
+//				.andReturn().getResponse().getContentAsString();
+//		assertEquals("User created successfully", result);
+//
+//
+//	}
+//
+//	@Test
+//	 void registerUser_When_Valid_Input_Then_Fail() throws JsonProcessingException, Exception {
+//		final String email = "ja@aa.com";
+//		final String pwd = "234";
+//		final Set<String> roles = new HashSet<String>(Arrays.asList("admin"));
+//		LoginRequest loginReqeust = new LoginRequest(email, pwd, roles);
+//		when(loginService.createUser(any(UserRequest.class)))
+//		.thenReturn(false);
+//
+//		mockMvc.perform(post("/signup")
+//				.contentType(MediaType.APPLICATION_JSON_VALUE)
+//				.content(objectMapper.writeValueAsString(loginReqeust)))
+//				.andExpect(status().isFailedDependency());
+//	}
 }

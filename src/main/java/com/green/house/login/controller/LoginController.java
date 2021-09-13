@@ -41,4 +41,16 @@ public class LoginController {
 		
 	}
 
+	@PostMapping(path="/signIn/lo")
+	public ResponseEntity<JWTResponse> testlo(@RequestBody LoginRequest loginRequest){
+
+		return ResponseEntity.ok(loginService.lock(loginRequest));
+	}
+
+	@PostMapping(path="/signIn/re")
+	public ResponseEntity<JWTResponse> read(@RequestBody LoginRequest loginRequest){
+
+		return ResponseEntity.ok(loginService.read(loginRequest));
+	}
+
 }
